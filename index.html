@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak Up Canada for Turkiye Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="language-toggle">
+            <span id="lang-en" class="active">English</span> | <span id="lang-tr">Türkçe</span>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <form id="registrationForm">
+            <fieldset class="form-step active" data-step="1">
+                <h2 data-lang-en="Speak Up Canada for Turkiye" data-lang-tr="Ses Ver Kanada">Speak Up Canada for Turkiye</h2>
+                <p data-lang-en="Please answer the following questions to the best of your ability. Your participation is completely voluntary." data-lang-tr="Lütfen aşağıdaki soruları elinizden geldiğince doğru bir şekilde yanıtlayınız. Katılımınız tamamen gönüllülük esaslıdır."></p>
+                <div class="disclaimer">
+                    <h3 data-lang-en="Disclaimer" data-lang-tr="Sorumluluk Reddi">Disclaimer</h3>
+                    <p data-lang-en="Welcome to the Speak Up Canada for Turkiye registration form! Thank you for taking the time to participate in this important initiative. Our goal is to foster a stronger, more connected community. This questionnaire will help us identify key areas such as professional backgrounds, skills, and interests, so we can match individuals with similar expertise, experiences, and needs. By sharing your responses, you'll contribute to the creation of valuable support networks within our community. Whether it's finding a mentor, connecting for professional opportunities, or offering support in personal and social matters, this questionnaire will enable us to build a more cohesive and thriving Turkish community in Ontario. Please note: By participating in this questionnaire, you agree that the information you provide will be used solely for the purposes of understanding and supporting Speak Up Canada for Turkiye, including connecting individuals based on professional and personal backgrounds, sharing resources, and fostering community engagement. Your information will be kept confidential and will not be shared outside of these defined purposes."
+                       data-lang-tr="Ses Ver Kanada kayıt formuna hoşgeldiniz! Bu ankete zaman ayırıp katıldığınız için çok teşekkür ederiz. Amacımız hep birlikte daha güçlü, daha bağlı bir topluluk nasıl kurabiliriz, bunu keşfetmek. Yanıtlarınızı paylaşarak, topluluğumuz içinde değerli destek ağlarının oluşturulmasına katkıda bulunmuş olacaksınız. İster bir mentor bulmak, ister profesyonel fırsatlar için network kurmak, ister kişisel ve sosyal konularda destek sağlamak olsun, bu anket, Ses Ver Kanada topluluğunun daha uyumlu ve gelişen bir yapıya kavuşmasına olanak tanıyacaktır. Lütfen dikkat: Bu ankete katılarak, verdiğiniz bilgilerin yalnızca Ses Ver Kanada’yı anlamak ve desteklemek amacıyla kullanılacağını kabul etmiş olursunuz. Bu amaçlar arasında bireyleri mesleki ve kişisel geçmişlerine göre eşleştirmek, kaynak paylaşımı yapmak ve topluluk etkileşimini teşvik etmek yer almaktadır. Verileriniz gizli tutulacak ve belirtilen amaçlar dışında paylaşılmayacaktır."></p>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="2">
+                <label for="email" data-lang-en="Email address" data-lang-tr="E-posta adresiniz"></label>
+                <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                <span class="error-message" id="emailError"></span>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="3">
+                <label data-lang-en="Your status in Canada?" data-lang-tr="Kanada’daki statünüz nedir?"></label>
+                <div>
+                    <input type="radio" id="status_tourist" name="status" value="Tourist" required>
+                    <label for="status_tourist" data-lang-en="Tourist" data-lang-tr="Turist"></label>
+                </div>
+                <div>
+                    <input type="radio" id="status_student" name="status" value="Student">
+                    <label for="status_student" data-lang-en="Student" data-lang-tr="Öğrenci"></label>
+                </div>
+                <div>
+                    <input type="radio" id="status_worker" name="status" value="Worker">
+                    <label for="status_worker" data-lang-en="Worker" data-lang-tr="Çalışan"></label>
+                </div>
+                <div>
+                    <input type="radio" id="status_pr" name="status" value="Permanent resident">
+                    <label for="status_pr" data-lang-en="Permanent resident" data-lang-tr="Daimi oturum"></label>
+                </div>
+                <div>
+                    <input type="radio" id="status_citizen" name="status" value="Canadian Citizen">
+                    <label for="status_citizen" data-lang-en="Canadian Citizen" data-lang-tr="Kanada vatandaşı"></label>
+                </div>
+                <div>
+                    <input type="radio" id="status_other" name="status" value="Other">
+                    <label for="status_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="status_other_text" name="status_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="4">
+                <label data-lang-en="How long have you been in Canada?" data-lang-tr="Kanada’da ne kadar süredir bulunuyorsunuz?"></label>
+                <div>
+                    <input type="radio" id="time_less_1yr" name="time_in_canada" value="Less than 1 year" required>
+                    <label for="time_less_1yr" data-lang-en="Less than 1 year" data-lang-tr="1 yıldan daha az"></label>
+                </div>
+                <div>
+                    <input type="radio" id="time_1_3yr" name="time_in_canada" value="1-3 years">
+                    <label for="time_1_3yr" data-lang-en="1-3 years" data-lang-tr="1-3 yıl"></label>
+                </div>
+                <div>
+                    <input type="radio" id="time_3_5yr" name="time_in_canada" value="3-5 years">
+                    <label for="time_3_5yr" data-lang-en="3-5 years" data-lang-tr="3-5 yıl"></label>
+                </div>
+                <div>
+                    <input type="radio" id="time_5_10yr" name="time_in_canada" value="5-10 years">
+                    <label for="time_5_10yr" data-lang-en="5-10 years" data-lang-tr="5-10 yıl"></label>
+                </div>
+                <div>
+                    <input type="radio" id="time_more_10yr" name="time_in_canada" value="More than 10 years">
+                    <label for="time_more_10yr" data-lang-en="More than 10 years" data-lang-tr="10 yıldan daha fazla"></label>
+                </div>
+                <div>
+                    <input type="radio" id="time_born" name="time_in_canada" value="Born here">
+                    <label for="time_born" data-lang-en="Born here" data-lang-tr="Burada doğdum"></label>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="5">
+                <label data-lang-en="Age" data-lang-tr="Yaş"></label>
+                <div>
+                    <input type="radio" id="age_below18" name="age" value="Below 18">
+                    <label for="age_below18" data-lang-en="Below 18" data-lang-tr="18 yaş altı"></label>
+                </div>
+                <div>
+                    <input type="radio" id="age_18_24" name="age" value="18-24">
+                    <label for="age_18_24" data-lang-en="18-24" data-lang-tr="18-24"></label>
+                </div>
+                <div>
+                    <input type="radio" id="age_25_34" name="age" value="25-34">
+                    <label for="age_25_34" data-lang-en="25-34" data-lang-tr="25-34"></label>
+                </div>
+                <div>
+                    <input type="radio" id="age_35_44" name="age" value="35-44">
+                    <label for="age_35_44" data-lang-en="35-44" data-lang-tr="35-44"></label>
+                </div>
+                <div>
+                    <input type="radio" id="age_45_54" name="age" value="45-54">
+                    <label for="age_45_54" data-lang-en="45-54" data-lang-tr="45-54"></label>
+                </div>
+                <div>
+                    <input type="radio" id="age_55_64" name="age" value="55-64">
+                    <label for="age_55_64" data-lang-en="55-64" data-lang-tr="55-64"></label>
+                </div>
+                <div>
+                    <input type="radio" id="age_65_above" name="age" value="65 or above">
+                    <label for="age_65_above" data-lang-en="65 or above" data-lang-tr="65 veya daha üstü"></label>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="6">
+                <label data-lang-en="Sexuality you identify as" data-lang-tr="Kendinizi tanımladığınız cinsiyet"></label>
+                <div>
+                    <input type="radio" id="gender_male" name="gender" value="Male">
+                    <label for="gender_male" data-lang-en="Male" data-lang-tr="Erkek"></label>
+                </div>
+                <div>
+                    <input type="radio" id="gender_female" name="gender" value="Female">
+                    <label for="gender_female" data-lang-en="Female" data-lang-tr="Kadın"></label>
+                </div>
+                <div>
+                    <input type="radio" id="gender_nonbinary" name="gender" value="Non-binary">
+                    <label for="gender_nonbinary" data-lang-en="Non-binary" data-lang-tr="İkili cinsiyet dışı"></label>
+                </div>
+                <div>
+                    <input type="radio" id="gender_trans" name="gender" value="Trans individual">
+                    <label for="gender_trans" data-lang-en="Trans individual" data-lang-tr="Trans birey"></label>
+                </div>
+                <div>
+                    <input type="radio" id="gender_prefer_not" name="gender" value="Prefer not to answer">
+                    <label for="gender_prefer_not" data-lang-en="Prefer not to answer" data-lang-tr="Yanıt vermek istemiyorum"></label>
+                </div>
+                <div>
+                    <input type="radio" id="gender_other" name="gender" value="Other">
+                    <label for="gender_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="gender_other_text" name="gender_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="7">
+                <label data-lang-en="Languages you speak" data-lang-tr="Konuştuğunuz diller"></label>
+                <div>
+                    <input type="checkbox" id="lang_turkish" name="languages" value="Turkish" required>
+                    <label for="lang_turkish" data-lang-en="Turkish" data-lang-tr="Türkçe"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_english" name="languages" value="English">
+                    <label for="lang_english" data-lang-en="English" data-lang-tr="İngilizce"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_french" name="languages" value="French">
+                    <label for="lang_french" data-lang-en="French" data-lang-tr="Fransızca"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_spanish" name="languages" value="Spanish">
+                    <label for="lang_spanish" data-lang-en="Spanish" data-lang-tr="İspanyolca"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_german" name="languages" value="German">
+                    <label for="lang_german" data-lang-en="German" data-lang-tr="Almanca"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_arabic" name="languages" value="Arabic">
+                    <label for="lang_arabic" data-lang-en="Arabic" data-lang-tr="Arapça"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_russian" name="languages" value="Russian">
+                    <label for="lang_russian" data-lang-en="Russian" data-lang-tr="Rusça"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_chinese" name="languages" value="Chinese">
+                    <label for="lang_chinese" data-lang-en="Chinese" data-lang-tr="Çince"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="lang_other" name="languages" value="Other">
+                    <label for="lang_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="lang_other_text" name="languages_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="8">
+                <label data-lang-en="Education level" data-lang-tr="Eğitim durumunuz"></label>
+                <div>
+                    <input type="radio" id="edu_highschool" name="education_level" value="Highschool" required>
+                    <label for="edu_highschool" data-lang-en="Highschool" data-lang-tr="Lise"></label>
+                </div>
+                <div>
+                    <input type="radio" id="edu_college" name="education_level" value="College">
+                    <label for="edu_college" data-lang-en="College" data-lang-tr="Meslek Yüksekokulu"></label>
+                </div>
+                <div>
+                    <input type="radio" id="edu_bachelors" name="education_level" value="Bachelors">
+                    <label for="edu_bachelors" data-lang-en="Bachelors" data-lang-tr="Lisans"></label>
+                </div>
+                <div>
+                    <input type="radio" id="edu_masters" name="education_level" value="Masters">
+                    <label for="edu_masters" data-lang-en="Masters" data-lang-tr="Yüksek lisans"></label>
+                </div>
+                <div>
+                    <input type="radio" id="edu_doctorate" name="education_level" value="Doctorate">
+                    <label for="edu_doctorate" data-lang-en="Doctorate" data-lang-tr="Doktora"></label>
+                </div>
+                <div>
+                    <input type="radio" id="edu_none" name="education_level" value="No formal education">
+                    <label for="edu_none" data-lang-en="No formal education" data-lang-tr="Resmi bir eğitimim yok"></label>
+                </div>
+                <div>
+                    <input type="radio" id="edu_other" name="education_level" value="Other">
+                    <label for="edu_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="edu_other_text" name="education_level_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="9">
+                <label data-lang-en="Education in Canada" data-lang-tr="Kanada’da aldığınız eğitimler"></label>
+                <div>
+                    <input type="checkbox" id="edu_canada_none" name="education_canada" value="None">
+                    <label for="edu_canada_none" data-lang-en="None" data-lang-tr="Almadım"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="edu_canada_all" name="education_canada" value="All my education is in Canada">
+                    <label for="edu_canada_all" data-lang-en="All my education is in Canada" data-lang-tr="Eğitimimin tamamı Kanada’da geçti"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="edu_canada_highschool" name="education_canada" value="Highschool">
+                    <label for="edu_canada_highschool" data-lang-en="Highschool" data-lang-tr="Lise"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="edu_canada_college" name="education_canada" value="College">
+                    <label for="edu_canada_college" data-lang-en="College" data-lang-tr="Meslek Yüksekokulu"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="edu_canada_bachelors" name="education_canada" value="Bachelors">
+                    <label for="edu_canada_bachelors" data-lang-en="Bachelors" data-lang-tr="Lisans"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="edu_canada_masters" name="education_canada" value="Masters">
+                    <label for="edu_canada_masters" data-lang-en="Masters" data-lang-tr="Yüksek lisans"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="edu_canada_doctorate" name="education_canada" value="Doctorate">
+                    <label for="edu_canada_doctorate" data-lang-en="Doctorate" data-lang-tr="Doktora"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="edu_canada_other" name="education_canada" value="Other">
+                    <label for="edu_canada_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="edu_canada_other_text" name="education_canada_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="10">
+                <label data-lang-en="Employment" data-lang-tr="Çalışma durumunuz"></label>
+                <div>
+                    <input type="checkbox" id="emp_fulltime" name="employment" value="Full time" required>
+                    <label for="emp_fulltime" data-lang-en="Full time" data-lang-tr="Tam zamanlı"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="emp_parttime" name="employment" value="Part time">
+                    <label for="emp_parttime" data-lang-en="Part time" data-lang-tr="Yarı zamanlı"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="emp_self" name="employment" value="Self-employed">
+                    <label for="emp_self" data-lang-en="Self-employed" data-lang-tr="Kendi işimde çalışıyorum"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="emp_student" name="employment" value="Student">
+                    <label for="emp_student" data-lang-en="Student" data-lang-tr="Öğrenciyim"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="emp_unemployed" name="employment" value="Unemployed">
+                    <label for="emp_unemployed" data-lang-en="Unemployed" data-lang-tr="İşsizim"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="emp_retired" name="employment" value="Retired">
+                    <label for="emp_retired" data-lang-en="Retired" data-lang-tr="Emekliyim"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="emp_other" name="employment" value="Other">
+                    <label for="emp_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="emp_other_text" name="employment_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="11">
+                <label data-lang-en="Occupation" data-lang-tr="Mesleğiniz"></label>
+                <div>
+                    <input type="radio" id="occ_construction" name="occupation" value="Construction" required>
+                    <label for="occ_construction" data-lang-en="Construction" data-lang-tr="İnşaat"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_education" name="occupation" value="Education">
+                    <label for="occ_education" data-lang-en="Education" data-lang-tr="Eğitim"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_finance" name="occupation" value="Finance">
+                    <label for="occ_finance" data-lang-en="Finance" data-lang-tr="Finans"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_healthcare" name="occupation" value="Healthcare">
+                    <label for="occ_healthcare" data-lang-en="Healthcare" data-lang-tr="Sağlık"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_hospitality" name="occupation" value="Hospitality & Tourism">
+                    <label for="occ_hospitality" data-lang-en="Hospitality & Tourism" data-lang-tr="Konaklama ve Turizm"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_it" name="occupation" value="Information Technology (IT)">
+                    <label for="occ_it" data-lang-en="Information Technology (IT)" data-lang-tr="Bilişim Teknolojileri (BT)"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_legal" name="occupation" value="Legal Services">
+                    <label for="occ_legal" data-lang-en="Legal Services" data-lang-tr="Hukuk Hizmetleri"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_manufacturing" name="occupation" value="Manufacturing">
+                    <label for="occ_manufacturing" data-lang-en="Manufacturing" data-lang-tr="İmalat"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_marketing" name="occupation" value="Marketing & Advertising">
+                    <label for="occ_marketing" data-lang-en="Marketing & Advertising" data-lang-tr="Pazarlama ve Reklamcılık"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_public" name="occupation" value="Public Service">
+                    <label for="occ_public" data-lang-en="Public Service" data-lang-tr="Kamu Hizmeti"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_retail" name="occupation" value="Retail">
+                    <label for="occ_retail" data-lang-en="Retail" data-lang-tr="Perakende"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_transportation" name="occupation" value="Transportation & Logistics">
+                    <label for="occ_transportation" data-lang-en="Transportation & Logistics" data-lang-tr="Ulaştırma ve Lojistik"></label>
+                </div>
+                <div>
+                    <input type="radio" id="occ_other" name="occupation" value="Other">
+                    <label for="occ_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="occ_other_text" name="occupation_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="12">
+                <label data-lang-en="City" data-lang-tr="Şehir"></label>
+                <div>
+                    <input type="radio" id="city_brampton" name="city" value="Brampton" required>
+                    <label for="city_brampton">Brampton</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_burlington" name="city" value="Burlington">
+                    <label for="city_burlington">Burlington</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_calgary" name="city" value="Calgary">
+                    <label for="city_calgary">Calgary</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_edmonton" name="city" value="Edmonton">
+                    <label for="city_edmonton">Edmonton</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_etobicoke" name="city" value="Etobicoke">
+                    <label for="city_etobicoke">Etobicoke</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_halifax" name="city" value="Halifax">
+                    <label for="city_halifax">Halifax</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_hamilton" name="city" value="Hamilton">
+                    <label for="city_hamilton">Hamilton</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_markham" name="city" value="Markham">
+                    <label for="city_markham">Markham</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_mississauga" name="city" value="Mississauga">
+                    <label for="city_mississauga">Mississauga</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_montreal" name="city" value="Montreal">
+                    <label for="city_montreal">Montreal</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_northyork" name="city" value="North York">
+                    <label for="city_northyork">North York</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_oakville" name="city" value="Oakville">
+                    <label for="city_oakville">Oakville</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_ottawa" name="city" value="Ottawa">
+                    <label for="city_ottawa">Ottawa</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_quebec" name="city" value="Quebec City">
+                    <label for="city_quebec">Quebec City</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_richmondhill" name="city" value="Richmond Hill">
+                    <label for="city_richmondhill">Richmond Hill</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_saskatoon" name="city" value="Saskatoon">
+                    <label for="city_saskatoon">Saskatoon</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_scarborough" name="city" value="Scarborough">
+                    <label for="city_scarborough">Scarborough</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_toronto" name="city" value="Toronto">
+                    <label for="city_toronto">Toronto</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_vancouver" name="city" value="Vancouver">
+                    <label for="city_vancouver">Vancouver</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_vaughan" name="city" value="Vaughan">
+                    <label for="city_vaughan">Vaughan</label>
+                </div>
+                <div>
+                    <input type="radio" id="city_other" name="city" value="Other">
+                    <label for="city_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="city_other_text" name="city_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="13">
+                <label data-lang-en="Marital Status" data-lang-tr="Medeni durumunuz"></label>
+                <div>
+                    <input type="radio" id="marital_single" name="marital_status" value="Single">
+                    <label for="marital_single" data-lang-en="Single" data-lang-tr="Bekar"></label>
+                </div>
+                <div>
+                    <input type="radio" id="marital_married" name="marital_status" value="Married">
+                    <label for="marital_married" data-lang-en="Married" data-lang-tr="Evli"></label>
+                </div>
+                <div>
+                    <input type="radio" id="marital_divorced" name="marital_status" value="Divorced">
+                    <label for="marital_divorced" data-lang-en="Divorced" data-lang-tr="Boşanmış"></label>
+                </div>
+                <div>
+                    <input type="radio" id="marital_engaged" name="marital_status" value="Engaged">
+                    <label for="marital_engaged" data-lang-en="Engaged" data-lang-tr="Nişanlı"></label>
+                </div>
+                <div>
+                    <input type="radio" id="marital_common_law" name="marital_status" value="Common-law Partner">
+                    <label for="marital_common_law" data-lang-en="Common-law Partner" data-lang-tr="Birlikte yaşayan"></label>
+                </div>
+                <div>
+                    <input type="radio" id="marital_prefer_not" name="marital_status" value="Prefer not to answer">
+                    <label for="marital_prefer_not" data-lang-en="Prefer not to answer" data-lang-tr="Yanıtlamak istemiyorum"></label>
+                </div>
+                <div>
+                    <input type="radio" id="marital_other" name="marital_status" value="Other">
+                    <label for="marital_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="marital_other_text" name="marital_status_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="14">
+                <label data-lang-en="Do you have children?" data-lang-tr="Çocuğunuz var mı?"></label>
+                <div>
+                    <input type="radio" id="children_under18" name="children" value="I have a child under 18">
+                    <label for="children_under18" data-lang-en="I have a child under 18" data-lang-tr="18 yaş altı çocuğum var"></label>
+                </div>
+                <div>
+                    <input type="radio" id="children_adult" name="children" value="I have an adult child">
+                    <label for="children_adult" data-lang-en="I have an adult child" data-lang-tr="Yetişkin çocuğum var"></label>
+                </div>
+                <div>
+                    <input type="radio" id="children_none" name="children" value="I do not have children">
+                    <label for="children_none" data-lang-en="I do not have children" data-lang-tr="Çocuğum yok"></label>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="15">
+                <label for="community_active" data-lang-en="Are you currently active in any community organization or social group?" data-lang-tr="Herhangi bir topluluk organizasyonunda ya da sosyal grupta aktif olarak yer alıyor musunuz?"></label>
+                <textarea id="community_active" name="community_active" rows="3"></textarea>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="16">
+                <label data-lang-en="Preference on being a volunteer or sponsorship" data-lang-tr="Gönüllü olma veya sponsor olma tercihiniz"></label>
+                <div>
+                    <input type="checkbox" id="pref_volunteer" name="preference" value="I want to be a volunteer" required>
+                    <label for="pref_volunteer" data-lang-en="I want to be a volunteer" data-lang-tr="Gönüllü olmak isterim"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="pref_sponsor" name="preference" value="I want to be a sponsor">
+                    <label for="pref_sponsor" data-lang-en="I want to be a sponsor" data-lang-tr="Sponsor olmak isterim"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="pref_none" name="preference" value="I don’t want either of them">
+                    <label for="pref_none" data-lang-en="I don’t want either of them" data-lang-tr="Hiçbirini istemiyorum"></label>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="17" id="volunteerSupportSection">
+                <label data-lang-en="What types of support can you offer as a volunteer?" data-lang-tr="Gönüllü olarak hangi destekleri sağlayabilirsiniz?"></label>
+                <div>
+                    <input type="checkbox" id="vol_organizing" name="volunteer_support" value="Organizing or running events">
+                    <label for="vol_organizing" data-lang-en="Organizing or running events" data-lang-tr="Etkinlik düzenlemek veya yürütmek"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="vol_mentorship" name="volunteer_support" value="Academic or professional mentorship">
+                    <label for="vol_mentorship" data-lang-en="Academic or professional mentorship" data-lang-tr="Akademik veya mesleki mentorluk"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="vol_translation" name="volunteer_support" value="Providing translation or language support">
+                    <label for="vol_translation" data-lang-en="Providing translation or language support" data-lang-tr="Çeviri veya dil desteği sağlamak"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="vol_transportation" name="volunteer_support" value="Transportation or delivery assistance">
+                    <label for="vol_transportation" data-lang-en="Transportation or delivery assistance" data-lang-tr="Ulaşım veya teslimat desteği"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="vol_administrative" name="volunteer_support" value="Administrative or communication support">
+                    <label for="vol_administrative" data-lang-en="Administrative or communication support" data-lang-tr="İdari veya iletişim desteği"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="vol_children" name="volunteer_support" value="Assisting with activities for children">
+                    <label for="vol_children" data-lang-en="Assisting with activities for children" data-lang-tr="Çocuklar için yapılan etkinliklerde yardımcı olmak"></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="vol_tech" name="volunteer_support" value="Technical support - device setup, tech help, etc.">
+                    <label for="vol_tech" data-lang-en="Technical support - device setup, tech help, etc." data-lang-tr="Teknik destek - cihaz kurulumu, teknoloji yardımı vb."></label>
+                </div>
+                <div>
+                    <input type="checkbox" id="vol_other" name="volunteer_support" value="Other">
+                    <label for="vol_other" data-lang-en="Other" data-lang-tr="Diğer"></label>
+                    <input type="text" id="vol_other_text" name="volunteer_support_other_text" class="other-text-input">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="18">
+                <label for="expectations" data-lang-en="What are your expectations from a Turkish community established by volunteers?" data-lang-tr="Gönüllüler tarafından kurulan bir Türk topluluğundan beklentileriniz nelerdir?"></label>
+                <textarea id="expectations" name="expectations" rows="3"></textarea>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="19">
+                <label for="suggestions" data-lang-en="Do you have any other comments or suggestions to help strengthen the community?" data-lang-tr="Topluluğu güçlendirmek için başka yorumlarınız veya önerileriniz var mı?"></label>
+                <textarea id="suggestions" name="suggestions" rows="3"></textarea>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="20">
+                <label data-lang-en="Do you allow us to contact you by email?" data-lang-tr="E-posta yoluyla sizinle iletişime geçmemize izin veriyor musunuz?" required></label>
+                <div>
+                    <input type="radio" id="contact_yes" name="contact_permission" value="Yes" required>
+                    <label for="contact_yes" data-lang-en="Yes" data-lang-tr="Evet"></label>
+                </div>
+                <div>
+                    <input type="radio" id="contact_no" name="contact_permission" value="No">
+                    <label for="contact_no" data-lang-en="No" data-lang-tr="Hayır"></label>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step" data-step="21">
+                <h2 data-lang-en="Thank you for your participation!" data-lang-tr="Katılımınız için teşekkür ederiz!">Thank you for your participation!</h2>
+            </fieldset>
+
+            <div class="form-navigation">
+                <button type="button" id="startBtn" data-lang-en="Start" data-lang-tr="Başla">Start</button>
+                <button type="button" id="backBtn" style="display: none;" data-lang-en="Back" data-lang-tr="Geri">Back</button>
+                <button type="button" id="nextBtn" style="display: none;" data-lang-en="Next" data-lang-tr="İleri">Next</button>
+                <button type="button" id="resetBtn" style="display: none;" data-lang-en="Reset" data-lang-tr="Sıfırla">Reset</button>
+                <button type="submit" id="submitBtn" style="display: none;" data-lang-en="Submit" data-lang-tr="Gönder">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
