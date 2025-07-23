@@ -10,9 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submitBtn');
     const langEnSpan = document.getElementById('lang-en');
     const langTrSpan = document.getElementById('lang-tr');
+    const emailError = document.getElementById('emailError'); // Get the email error span
 
     let currentStep = 0; // Tracks the current active form step (0-indexed)
     let currentLanguage = 'en'; // 'en' for English, 'tr' for Turkish
+
+    // Object to store system messages
+    const systemMessages = {
+        en: {
+            emailRequired: 'Email is required.',
+            emailInvalid: 'Please enter a valid email address.',
+            fieldRequired: 'This field is required.',
+            selectOption: 'Please select an option.',
+            resetConfirm: 'Are you sure you want to reset the form?'
+        },
+        tr: {
+            emailRequired: 'E-posta adresi gerekli.',
+            emailInvalid: 'Lütfen geçerli bir e-posta adresi girin.',
+            fieldRequired: 'Bu alan gerekli.',
+            selectOption: 'Lütfen bir seçenek seçin.',
+            resetConfirm: 'Formu sıfırlamak istediğinizden emin misiniz?'
+        }
+    };
 
     // --- Core Functions ---
 
@@ -59,13 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle email validation for step 2 specifically
         if (currentStep === 1) {
             const emailInput = currentFieldset.querySelector('#email');
-            const emailError = document.getElementById('emailError');
             if (emailInput) {
                 if (!emailInput.value.trim()) {
-                    emailError.textContent = currentLanguage === 'en' ? 'Email is required.' : 'E-posta adresi gerekli.';
+                    emailError.textContent = systemMessages[currentLanguage].emailRequired;
                     isValid = false;
                 } else if (!emailInput.validity.valid) {
-                    emailError.textContent = currentLanguage === 'en' ? 'Please enter a valid email address.' : 'Lütfen geçerli bir e-posta adresi girin.';
+                    emailError.textContent = systemMessages[currentLanguage].emailInvalid;
                     isValid = false;
                 } else {
                     emailError.textContent = ''; // Clear error
@@ -83,14 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isChecked = Array.from(group).some(i => i.checked);
                 if (!isChecked) {
                     isValid = false;
-                    // Add a visual indicator or message if desired
-                    input.setCustomValidity(currentLanguage === 'en' ? 'Please select an option.' : 'Lütfen bir seçenek seçin.');
+                    // Use setCustomValidity to show browser's native message
+                    input.setCustomValidity(systemMessages[currentLanguage].selectOption);
                 } else {
                     input.setCustomValidity('');
                 }
             } else if (!input.value.trim()) {
                 isValid = false;
-                input.setCustomValidity(currentLanguage === 'en' ? 'This field is required.' : 'Bu alan gerekli.');
+                input.setCustomValidity(systemMessages[currentLanguage].fieldRequired);
             } else {
                 input.setCustomValidity('');
             }
@@ -174,7 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resetBtn.textContent = lang === 'en' ? resetBtn.dataset.langEn : resetBtn.dataset.langTr;
         submitBtn.textContent = lang === 'en' ? submitBtn.dataset.langEn : submitBtn.dataset.langTr;
 
-        // Clear and re-validate current step to update error messages if any
+        // Re-validate the current step to update any visible error messages
+        // This is important for real-time validation feedback to update language
         validateCurrentStep();
     };
 
@@ -202,12 +221,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reset Button
     resetBtn.addEventListener('click', () => {
-        if (confirm(currentLanguage === 'en' ? 'Are you sure you want to reset the form?' : 'Formu sıfırlamak istediğinizden emin misiniz?')) {
+        // Use the systemMessages object for the confirmation message
+        if (confirm(systemMessages[currentLanguage].resetConfirm)) {
             form.reset(); // Resets all form fields
             currentStep = 0; // Go back to the welcome step
             showCurrentStep();
             // Clear any lingering error messages
-            document.getElementById('emailError').textContent = '';
+            emailError.textContent = '';
             // Reset 'other' text inputs visibility
             Array.from(form.querySelectorAll('.other-text-input')).forEach(input => {
                 input.style.display = 'none';
@@ -219,19 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Submit Button
-    // Note: Formspree handles the actual submission via the HTML form's action attribute.
-    // This JS only ensures validation passes before the browser allows the submit.
     submitBtn.addEventListener('click', (event) => {
         if (!validateCurrentStep()) {
             event.preventDefault(); // Prevent submission if validation fails
         } else {
             // If validation passes, allow the form to submit to Formspree
-            // Optional: You could show a local "Thank You" message here
-            // before Formspree redirects, but it requires AJAX submission.
-            // For now, it will simply submit the form.
             currentStep = fieldsets.length - 1; // Advance to the "Thank You" step visually
             showCurrentStep();
-            // The form will then submit naturally
+            // The form will then submit naturally to Formspree
         }
     });
 
