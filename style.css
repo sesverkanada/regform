@@ -143,7 +143,11 @@ fieldset div label {
 
 .form-navigation {
     margin-top: 30px;
-    text-align: center;
+    /* text-align: center;  Remove this or override */
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute items with space between */
+    align-items: center;
+    gap: 10px; /* Space between buttons */
 }
 
 .form-navigation button {
@@ -154,14 +158,34 @@ fieldset div label {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    margin: 0 5px;
+    /* margin: 0 5px;  Remove this or override */
     transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Prevent buttons from shrinking too much */
 }
 
 .form-navigation button:hover {
     background-color: #E70524; /* Secondary colour - 1: CC_Red_02 */
 }
 
+/* Specific button positioning classes */
+.form-navigation .btn-left {
+    margin-right: auto; /* Pushes other items to the right */
+}
+
+.form-navigation .btn-right {
+    margin-left: auto; /* Pushes other items to the left */
+}
+
+/* Submit button color update */
+#submitBtn {
+    background-color: #E70524; /* Secondary colour - 1: CC_Red_02 */
+}
+
+#submitBtn:hover {
+    background-color: #F33C3A; /* Primary colour: CC_Red_01 */
+}
+
+/* Ensure #resetBtn also retains its specified color, if it's separate from general button styles */
 #resetBtn {
     background-color: #E70524; /* Secondary colour - 1: CC_Red_02 */
 }
@@ -170,13 +194,6 @@ fieldset div label {
     background-color: #F33C3A; /* Primary colour: CC_Red_01 */
 }
 
-#submitBtn {
-    background-color: #E70524; /* Secondary colour - 1: CC_Red_02 */
-}
-
-#submitBtn:hover {
-    background-color: #F33C3A; /* Primary colour: CC_Red_01 */
-}
 
 .error-message {
     color: #E70524; /* Secondary colour - 1: CC_Red_02 */
