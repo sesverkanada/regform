@@ -22,14 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
             emailInvalid: 'Please enter a valid email address.',
             fieldRequired: 'This field is required.',
             selectOption: 'Please select an option.',
-            resetConfirm: 'Are you sure you want to reset the form?'
+            resetConfirm: 'Are you sure you want to reset the form?',
+            submissionSuccess: 'Your submission has been received!',
+            submissionError: 'There was an error submitting your form. Please try again.'
         },
         tr: {
             emailRequired: 'E-posta adresi gerekli.',
             emailInvalid: 'Lütfen geçerli bir e-posta adresi girin.',
             fieldRequired: 'Bu alan gerekli.',
             selectOption: 'Lütfen bir seçenek seçin.',
-            resetConfirm: 'Formu sıfırlamak istediğinizden emin misiniz?'
+            resetConfirm: 'Formu sıfırlamak istediğinizden emin misiniz?',
+            submissionSuccess: 'Gönderiminiz alındı!',
+            submissionError: 'Formunuzu gönderirken bir hata oluştu. Lütfen tekrar deneyin.'
         }
     };
 
@@ -59,11 +63,29 @@ document.addEventListener('DOMContentLoaded', () => {
      * Adjusts the visibility of navigation buttons based on the current step.
      */
     const updateButtonVisibility = () => {
+        // Start button only on step 0
         startBtn.style.display = currentStep === 0 ? 'block' : 'none';
+
+        // Back button always on the left, visible after step 0 and before last step
         backBtn.style.display = currentStep > 0 && currentStep < fieldsets.length - 1 ? 'inline-block' : 'none';
+
+        // Next button visible before the second-to-last step
         nextBtn.style.display = currentStep < fieldsets.length - 2 ? 'inline-block' : 'none';
-        submitBtn.style.display = currentStep === fieldsets.length - 2 ? 'inline-block' : 'none'; // Submit on the second to last step
-        resetBtn.style.display = currentStep > 0 && currentStep < fieldsets.length - 1 ? 'inline-block' : 'none'; // Reset button visible on active form steps
+
+        // Submit button visible only on the second-to-last step
+        submitBtn.style.display = currentStep === fieldsets.length - 2 ? 'inline-block' : 'none';
+
+        // Reset button always on the right, visible after step 0 and before last step
+        resetBtn.style.display = currentStep > 0 && currentStep < fieldsets.length - 1 ? 'inline-block' : 'none';
+
+        // Hide main action buttons (start/next/submit) on the "Thank you" step
+        if (currentStep === fieldsets.length - 1) {
+            startBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            submitBtn.style.display = 'none';
+            backBtn.style.display = 'none'; // Also hide back button on thank you
+            resetBtn.style.display = 'none'; // And reset button on thank you
+        }
     };
 
     /**
@@ -98,6 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (type === 'radio' || type === 'checkbox') {
                 const group = currentFieldset.querySelectorAll(`[name="${name}"]`);
+                // Check if the current required input is visible/active (e.g., if it's an "other_text" field)
+                if (input.style.display === 'none' && input.classList.contains('other-text-input')) {
+                     // If it's a hidden 'other' text input, don't validate it
+                     input.setCustomValidity('');
+                     continue;
+                }
                 const isChecked = Array.from(group).some(i => i.checked);
                 if (!isChecked) {
                     isValid = false;
@@ -238,15 +266,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Submit Button
-    submitBtn.addEventListener('click', (event) => {
+    // Submit Button (AJAX Submission to Formspree)
+    submitBtn.addEventListener('click', async (event) => {
+        event.preventDefault(); // Prevent the default form submission (important!)
+
         if (!validateCurrentStep()) {
-            event.preventDefault(); // Prevent submission if validation fails
-        } else {
-            // If validation passes, allow the form to submit to Formspree
-            currentStep = fieldsets.length - 1; // Advance to the "Thank You" step visually
+            // If validation fails, stop here
+            return;
+        }
+
+        // Show the "Thank you" step immediately after validation passes
+        currentStep = fieldsets.length - 1;
+        showCurrentStep();
+
+        // Collect form data
+        const formData = new FormData(form);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            // Handle multiple checkboxes with the same name
+            if (data[key]) {
+                if (Array.isArray(data[key])) {
+                    data[key].push(value);
+                } else {
+                    data[key] = [data[key], value];
+                }
+            } else {
+                data[key] = value;
+            }
+        }
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                // Formspree returns 200 OK on success
+                console.log(systemMessages[currentLanguage].submissionSuccess);
+                // No further action needed here, as the "Thank you" step is already shown.
+                // You might want to clear the form here if you allow multiple submissions
+                // or if the user can go back, but for a one-time submission, it's fine.
+            } else {
+                // Handle Formspree errors (e.g., rate limits, invalid form ID)
+                const errorData = await response.json();
+                console.error(systemMessages[currentLanguage].submissionError, errorData);
+                // Optionally revert to the submit step or show an error message on the page
+                currentStep = fieldsets.length - 2; // Go back to submit step
+                showCurrentStep();
+                alert(systemMessages[currentLanguage].submissionError);
+            }
+        } catch (error) {
+            console.error(systemMessages[currentLanguage].submissionError, error);
+            // Optionally revert to the submit step or show an error message on the page
+            currentStep = fieldsets.length - 2; // Go back to submit step
             showCurrentStep();
-            // The form will then submit naturally to Formspree
+            alert(systemMessages[currentLanguage].submissionError);
         }
     });
 
